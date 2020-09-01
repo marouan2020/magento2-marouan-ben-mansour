@@ -19,6 +19,15 @@ sudo cp /scripts/install-magento-apache2.conf /etc/apache2/apache2.conf
 # Restart the web server
 sudo apache2ctl restart
 
+sudo apt install php7.4-intl
+
+sudo a2enmod proxy_fcgi setenvif
+
+sudo a2enconf php7.4-fpm
+
+# Restart the web server
+sudo apache2ctl restart
+
 # Load all the other composer packages.
 cd /vagrant
 id
