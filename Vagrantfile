@@ -5,16 +5,20 @@
 Vagrant.configure(2) do |config|
    
   # Base box.
-  config.vm.box = "minioak/magento2.ubuntu"
+  #config.vm.box = "minioak/magento2.ubuntu"
 
-  config.vm.box_version = "1.3.0"
+  #config.vm.box_version = "1.3.0"
+  config.vm.box = "sternpunkt/jimmybox"
 
+      config.vm.provider "virtualbox" do |v|
+          v.memory = 1024
+          v.customize ["modifyvm", :id, "--audio", "none"]
+        end
   # Create a private network allowing host-only access.
   config.vm.network "private_network", ip: "192.168.33.33"
 
   # Extra sync folder.
   config.vm.synced_folder "scripts", "/scripts"
-
   # Auth.json + composer cache, don't sync changes back to avoid collisions.
   config.vm.synced_folder ENV['HOME'] + '/composer/',
     '/home/vagrant/composer/',

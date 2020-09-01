@@ -26,12 +26,12 @@ composer install
 chmod +x bin/magento
 
 # Create the database
-echo 'CREATE DATABASE IF NOT EXISTS `magento`;' | mysql -uroot
+echo 'CREATE DATABASE IF NOT EXISTS `magento`;' | mysql -u root
 
 # Create tables and env.php with local settings.
 bin/magento setup:install --backend-frontname=admin \
         --cleanup-database --db-host=127.0.0.1 \
-        --db-name=magento --db-user=root --db-password= \
+        --db-name=magento --db-user=root --db-password= root \
         --admin-firstname=Magento --admin-lastname=User \
         --admin-email=user@example.com \
         --admin-user=admin --admin-password=admin --language=en_US \
